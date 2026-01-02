@@ -1,0 +1,29 @@
+[project]
+name = "rps"
+version = "0.1.0"
+description = "A short description of the project."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+lint = [
+    "ruff>=0.14.7",
+    "ty",
+    "pytest",
+    "sphinx",
+    "sphinx_rtd_theme",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.workspace]
+members = ["rps/src"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rps"]
