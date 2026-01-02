@@ -77,30 +77,30 @@ El historial de jugadas se guarda en memoria, transformando el entorno de episó
 
 ## Estructura de directorios
 
-rps/
-├── data/                       # Datos de prueba o recursos externos (opcional)
-├── docs/                       # Documentación del proyecto
-│   ├── build/                  # Archivos generados por Sphinx (HTML, doctrees)
-│   ├── docs/                   # Documentación fuente Sphinx (conf.py, .rst, _static)
-│   │   └── source/
-│   │       ├── conf.py         # Configuración de Sphinx
-│   │       ├── modules.rst     # Documentación de módulos generada automáticamente
-│   │       ├── rps.rst         # Documentación de código RPS
-│   │       └── _static/        # Archivos estáticos (CSS, JS, imágenes)
-│   ├── index.rst               # Documento principal para Sphinx
-│   ├── make.bat                # Script para compilar en Windows
-│   ├── Makefile                # Makefile para compilar documentación
-│   └── source/                 # Otra fuente de documentación (generada por sphinx-apidoc)
-│       ├── modules.rst
-│       └── rps.rst
-├── pyproject.toml              # Configuración del proyecto Python (dependencias, build, metadata)
-├── README.md                   # Descripción general del proyecto
-├── src/                        # Código fuente
-│   ├── rps/                    # Módulo principal del juego
-│   │   ├── __init__.py
-│   │   └── main.py             # Implementación del agente y lógica del juego
-│   └── test/                   # Tests del proyecto
-│       ├── __init__.py
-│       └── test_proba.py
-└── uv.lock                     # Lock file generado por Hatch (gestor de entornos)
+    rps/
+    ├── data/                       # Datos de prueba o recursos externos (opcional)
+    ├── docs/                       # Documentación del proyecto
+    │   ├── build/                  # Archivos generados por Sphinx (HTML, doctrees)
+    │   ├── docs/                   # Documentación fuente Sphinx (conf.py, .rst, _static)
+    │   │   └── source/
+    │   │       ├── conf.py         # Configuración de Sphinx
+    │   │       ├── modules.rst     # Documentación de módulos generada automáticamente
+    │   │       ├── rps.rst         # Documentación de código RPS
+    │   │       └── _static/        # Archivos estáticos (CSS, JS, imágenes)
+    │   ├── index.rst               # Documento principal para Sphinx
+    │   ├── make.bat                # Script para compilar en Windows
+    │   ├── Makefile                # Makefile para compilar documentación
+    │   └── source/                 # Otra fuente de documentación (generada por sphinx-apidoc)
+    │       ├── modules.rst
+    │       └── rps.rst
+    ├── pyproject.toml              # Configuración del proyecto Python (dependencias, build, metadata)
+    ├── README.md                   # Descripción general del proyecto
+    ├── src/                        # Código fuente
+    │   ├── rps/                    # Módulo principal del juego
+    │   │   ├── __init__.py
+    │   │   └── main.py             # Implementación del agente y lógica del juego
+    │   └── test/                   # Tests del proyecto
+    │       ├── __init__.py
+    │       └── test_proba.py
+    └── uv.lock                     # Lock file generado por Hatch (gestor de entornos)
 
