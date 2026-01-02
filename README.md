@@ -1,13 +1,11 @@
+# Práctica Axentes Intelixentes
 
-Práctica Axentes Intelixentes
-=============================
-
-rps_clase de Alejandro Cancelas Chapela
+**rps_clase de Alejandro Cancelas Chapela**
 
 # RPS
 
-Proyecto de la especialidad Inteligencia Artificial y Big Data sobre la estructura de un agente para el juego Piedra-Papel-Tijeras (RPS).  
-Este proyecto implementa un agente secuencial de predicción por frecuencia en Python, diseñado para detectar patrones del oponente y tomar decisiones inteligentes basadas en su historial de jugadas.
+Proyecto de la especialidad **Inteligencia Artificial y Big Data** sobre la estructura de un agente para el juego **Piedra-Papel-Tijeras (RPS)**.  
+Implementa un **agente secuencial de predicción por frecuencia** en Python, diseñado para detectar patrones del oponente y tomar decisiones inteligentes basadas en su historial de jugadas.
 
 ---
 
@@ -72,9 +70,37 @@ El historial de jugadas se guarda en memoria, transformando el entorno de episó
 ## Mejoras y extensiones
 
 - Se puede extender la lógica a la versión **Piedra-Papel-Tijeras-Lagarto-Spock** sin reestructurar el agente.  
-- Modularidad y separación de responsabilidades permiten futuras mejoras en la IA del agente.
+- Modularidad y separación de responsabilidades permiten futuras mejoras en la IA del agente.  
+- La documentación está generada automáticamente con **Sphinx**, usando `autodoc` y `napoleon` para integrar docstrings de Python.
 
 ---
 
 ## Estructura de directorios
+
+rps/
+├── data/                       # Datos de prueba o recursos externos (opcional)
+├── docs/                       # Documentación del proyecto
+│   ├── build/                  # Archivos generados por Sphinx (HTML, doctrees)
+│   ├── docs/                   # Documentación fuente Sphinx (conf.py, .rst, _static)
+│   │   └── source/
+│   │       ├── conf.py         # Configuración de Sphinx
+│   │       ├── modules.rst     # Documentación de módulos generada automáticamente
+│   │       ├── rps.rst         # Documentación de código RPS
+│   │       └── _static/        # Archivos estáticos (CSS, JS, imágenes)
+│   ├── index.rst               # Documento principal para Sphinx
+│   ├── make.bat                # Script para compilar en Windows
+│   ├── Makefile                # Makefile para compilar documentación
+│   └── source/                 # Otra fuente de documentación (generada por sphinx-apidoc)
+│       ├── modules.rst
+│       └── rps.rst
+├── pyproject.toml              # Configuración del proyecto Python (dependencias, build, metadata)
+├── README.md                   # Descripción general del proyecto
+├── src/                        # Código fuente
+│   ├── rps/                    # Módulo principal del juego
+│   │   ├── __init__.py
+│   │   └── main.py             # Implementación del agente y lógica del juego
+│   └── test/                   # Tests del proyecto
+│       ├── __init__.py
+│       └── test_proba.py
+└── uv.lock                     # Lock file generado por Hatch (gestor de entornos)
 
