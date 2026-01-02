@@ -4,127 +4,87 @@ from enum import IntEnum
 memoria = []
 
 class GameAction(IntEnum):
-
     Rock = 0
     Paper = 1
     Scissors = 2
-
+    Lizard = 3
+    Spock = 4
 
 class GameResult(IntEnum):
     Victory = 0
     Defeat = 1
     Tie = 2
 
-
+# Tabla de victorias: qué le gana a qué
 Victories = {
-    GameAction.Rock: GameAction.Paper,
-    GameAction.Paper: GameAction.Scissors,
-    GameAction.Scissors: GameAction.Rock
+    GameAction.Rock:     [GameAction.Scissors, GameAction.Lizard],
+    GameAction.Paper:    [GameAction.Rock, GameAction.Spock],
+    GameAction.Scissors: [GameAction.Paper, GameAction.Lizard],
+    GameAction.Lizard:   [GameAction.Spock, GameAction.Paper],
+    GameAction.Spock:    [GameAction.Scissors, GameAction.Rock]
 }
 
 def assess_game(user_action, computer_action):
-
-    game_result = None
-
     if user_action == computer_action:
         print(f"User and computer picked {user_action.name}. Draw game!")
-        game_result = GameResult.Tie
+        return GameResult.Tie
 
-    # En caso de que el usuario haya elegido Rock
-    elif user_action == GameAction.Rock:
-        if computer_action == GameAction.Scissors:
-            print("Rock smashes scissors. You won!")
-            game_result = GameResult.Victory
-        else:
-            print("Paper covers rock. You lost!")
-            game_result = GameResult.Defeat
-
-    # En caso de que el usuario haya elegido Paper
-    elif user_action == GameAction.Paper:
-        if computer_action == GameAction.Rock:
-            print("Paper covers rock. You won!")
-            game_result = GameResult.Victory
-        else:
-            print("Scissors cuts paper. You lost!")
-            game_result = GameResult.Defeat
-
-    # En caso de que el usuario haya elegido Scissors
-    elif user_action == GameAction.Scissors:
-        if computer_action == GameAction.Rock:
-            print("Rock smashes scissors. You lost!")
-            game_result = GameResult.Defeat
-        else:
-            print("Scissors cuts paper. You won!")
-            game_result = GameResult.Victory
-
-    return game_result
-
+    elif computer_action in Victories[user_action]:
+        print(f"{user_action.name} beats {computer_action.name}. You won!")
+        return GameResult.Victory
+    else:
+        print(f"{computer_action.name} beats {user_action.name}. You lost!")
+        return GameResult.Defeat
 
 def get_computer_action():
     def frequency_analysis():
-        rock_salida = memoria.count(0)
-        paper_salida = memoria.count(1)
-        scissors_salida = memoria.count(2)
+        counts = [memoria.count(i) for i in range(len(GameAction))]
+        total = sum(counts)
+        percentages = [c / total for c in counts]
+        max_percentage = max(percentages)
 
-        total_salidas = rock_salida + paper_salida + scissors_salida
-
-        porcentaje_rock = rock_salida / total_salidas
-        porcentaje_paper = paper_salida / total_salidas
-        porcentaje_scissors = scissors_salida / total_salidas
-
-        max_porcentaje = max(porcentaje_rock, porcentaje_paper, porcentaje_scissors)
-
-        if max_porcentaje >= 0.40:
-            if max_porcentaje == porcentaje_rock:
-                return 1
-            elif max_porcentaje == porcentaje_paper:
-                return 2
-            elif max_porcentaje == porcentaje_scissors:
-                return 0
+        if max_percentage >= 0.40:
+            most_common_index = percentages.index(max_percentage)
+            # Elige aleatoriamente una acción que gane a la más frecuente
+            winning_options = [k for k, v in Victories.items() if GameAction(most_common_index) in v]
+            return random.choice(winning_options)
         else:
-            return (random.randint(0, len(GameAction) - 1))
+            return random.randint(0, len(GameAction) - 1)
 
     if len(memoria) > 5:
         computer_selection = frequency_analysis()
     else:
         computer_selection = random.randint(0, len(GameAction) - 1)
+
     computer_action = GameAction(computer_selection)
     print(f"Computer picked {computer_action.name}.")
-
     return computer_action
 
-
 def get_user_action():
-    game_choices = [f"{game_action.name}[{game_action.value}]" for game_action in GameAction]
+    game_choices = [f"{ga.name}[{ga.value}]" for ga in GameAction]
     game_choices_str = ", ".join(game_choices)
-    user_selection = int(input(f"\nPick a choice ({game_choices_str}): "))
-    user_action = GameAction(user_selection)
-
-    return user_action
-
+    while True:
+        try:
+            user_selection = int(input(f"\nPick a choice ({game_choices_str}): "))
+            user_action = GameAction(user_selection)
+            return user_action
+        except (ValueError, KeyError):
+            range_str = f"[0, {len(GameAction) - 1}]"
+            print(f"Invalid selection. Pick a choice in range {range_str}!")
 
 def play_another_round():
     another_round = input("\nAnother round? (y/n): ")
     return another_round.lower() == 'y'
 
-
 def main():
-
     while True:
-        try:
-            user_action = get_user_action()
-        except ValueError:
-            range_str = f"[0, {len(GameAction) - 1}]"
-            print(f"Invalid selection. Pick a choice in range {range_str}!")
-            continue
-
+        user_action = get_user_action()
         memoria.append(user_action.value)
         computer_action = get_computer_action()
         assess_game(user_action, computer_action)
 
         if not play_another_round():
             break
-
 
 if __name__ == "__main__":
     main()
