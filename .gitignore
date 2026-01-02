@@ -1,0 +1,15 @@
+# Entorno virtual
+.venv/
+
+# Archivos de Python compilados
+__pycache__/
+*.py[cod]
+
+# Archivos de logs
+*.log
+
+# Archivos de Sphinx / documentación build
+docs/_build/
+
+# Archivos de configuración del editor 
+.vscode/

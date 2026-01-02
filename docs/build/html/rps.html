@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>rps package &#8212; documentación de rps0 - </title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=e2bb6099"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="prev" title="rps" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="rps-package">
+<h1>rps package<a class="headerlink" href="#rps-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-rps.main">
+<span id="rps-main-module"></span><h2>rps.main module<a class="headerlink" href="#module-rps.main" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="rps.main.GameAction">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rps.main.</span></span><span class="sig-name descname"><span class="pre">GameAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rps/main.html#GameAction"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#rps.main.GameAction" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></p>
+<p>Enum que representa las acciones posibles en el juego.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rps.main.GameAction.Rock">
+<span class="sig-name descname"><span class="pre">Rock</span></span><a class="headerlink" href="#rps.main.GameAction.Rock" title="Link to this definition">¶</a></dt>
+<dd><p>Piedra</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rps.main.GameAction.Paper">
+<span class="sig-name descname"><span class="pre">Paper</span></span><a class="headerlink" href="#rps.main.GameAction.Paper" title="Link to this definition">¶</a></dt>
+<dd><p>Papel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rps.main.GameAction.Scissors">
+<span class="sig-name descname"><span class="pre">Scissors</span></span><a class="headerlink" href="#rps.main.GameAction.Scissors" title="Link to this definition">¶</a></dt>
+<dd><p>Tijeras</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rps.main.GameAction.Lizard">
+<span class="sig-name descname"><span class="pre">Lizard</span></span><a class="headerlink" href="#rps.main.GameAction.Lizard" title="Link to this definition">¶</a></dt>
+<dd><p>Lagarto</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rps.main.GameAction.Spock">
+<span class="sig-name descname"><span class="pre">Spock</span></span><a class="headerlink" href="#rps.main.GameAction.Spock" title="Link to this definition">¶</a></dt>
+<dd><p>Spock</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">Lizard</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">Paper</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#id1" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">Rock</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#id2" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">Scissors</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#id3" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">Spock</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rps.main.GameResult">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rps.main.</span></span><span class="sig-name descname"><span class="pre">GameResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rps/main.html#GameResult"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#rps.main.GameResult" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></p>
+<p>Enum que representa los posibles resultados de una ronda.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rps.main.GameResult.Victory">
+<span class="sig-name descname"><span class="pre">Victory</span></span><a class="headerlink" href="#rps.main.GameResult.Victory" title="Link to this definition">¶</a></dt>
+<dd><p>Victoria del usuario</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rps.main.GameResult.Defeat">
+<span class="sig-name descname"><span class="pre">Defeat</span></span><a class="headerlink" href="#rps.main.GameResult.Defeat" title="Link to this definition">¶</a></dt>
+<dd><p>Derrota del usuario</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rps.main.GameResult.Tie">
+<span class="sig-name descname"><span class="pre">Tie</span></span><a class="headerlink" href="#rps.main.GameResult.Tie" title="Link to this definition">¶</a></dt>
+<dd><p>Empate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">Defeat</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">Tie</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#id6" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">Victory</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#id7" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rps.main.assess_game">
+<span class="sig-prename descclassname"><span class="pre">rps.main.</span></span><span class="sig-name descname"><span class="pre">assess_game</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rps.main.GameAction" title="rps.main.GameAction"><span class="pre">GameAction</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">computer_action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rps.main.GameAction" title="rps.main.GameAction"><span class="pre">GameAction</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#rps.main.GameResult" title="rps.main.GameResult"><span class="pre">GameResult</span></a></span></span><a class="reference internal" href="_modules/rps/main.html#assess_game"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#rps.main.assess_game" title="Link to this definition">¶</a></dt>
+<dd><p>Determina el resultado de una ronda entre el usuario y la computadora.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_action</strong> (<a class="reference internal" href="#rps.main.GameAction" title="rps.main.GameAction"><em>GameAction</em></a>) – acción elegida por el usuario</p></li>
+<li><p><strong>computer_action</strong> (<a class="reference internal" href="#rps.main.GameAction" title="rps.main.GameAction"><em>GameAction</em></a>) – acción elegida por la computadora</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Resultado de la ronda (Victory, Defeat o Tie)</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#rps.main.GameResult" title="rps.main.GameResult">GameResult</a></p>
+</dd>
+<dt class="field-even">Muestra<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – si alguno de los argumentos no es de tipo GameAction</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rps.main.get_computer_action">
+<span class="sig-prename descclassname"><span class="pre">rps.main.</span></span><span class="sig-name descname"><span class="pre">get_computer_action</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#rps.main.GameAction" title="rps.main.GameAction"><span class="pre">GameAction</span></a></span></span><a class="reference internal" href="_modules/rps/main.html#get_computer_action"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#rps.main.get_computer_action" title="Link to this definition">¶</a></dt>
+<dd><p>Selecciona la acción de la computadora.
+Si hay más de 5 rondas jugadas, utiliza análisis de frecuencia del historial
+de jugadas del usuario; si no, selecciona aleatoriamente.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Acción seleccionada por la computadora</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#rps.main.GameAction" title="rps.main.GameAction">GameAction</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rps.main.get_user_action">
+<span class="sig-prename descclassname"><span class="pre">rps.main.</span></span><span class="sig-name descname"><span class="pre">get_user_action</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#rps.main.GameAction" title="rps.main.GameAction"><span class="pre">GameAction</span></a></span></span><a class="reference internal" href="_modules/rps/main.html#get_user_action"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#rps.main.get_user_action" title="Link to this definition">¶</a></dt>
+<dd><p>Solicita la acción del usuario a través de la consola.
+Valida que la entrada sea correcta y de tipo GameAction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Acción seleccionada por el usuario</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#rps.main.GameAction" title="rps.main.GameAction">GameAction</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rps.main.main">
+<span class="sig-prename descclassname"><span class="pre">rps.main.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/rps/main.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#rps.main.main" title="Link to this definition">¶</a></dt>
+<dd><p>Ejecuta el flujo principal del juego.
+Gestiona la interacción con el usuario, la selección de acciones y la evaluación
+de resultados hasta que el usuario decida salir.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rps.main.play_another_round">
+<span class="sig-prename descclassname"><span class="pre">rps.main.</span></span><span class="sig-name descname"><span class="pre">play_another_round</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/rps/main.html#play_another_round"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#rps.main.play_another_round" title="Link to this definition">¶</a></dt>
+<dd><p>Pregunta al usuario si desea jugar otra ronda.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True si desea continuar, False si no</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-rps">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rps" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">rps0</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navegación</h3>
+<p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">rps</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">rps package</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">rps package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rps.main">rps.main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rps">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">rps</a><ul>
+      <li>Previous: <a href="modules.html" title="capítulo anterior">rps</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Alejandro Cancelas Chapela.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/rps.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
