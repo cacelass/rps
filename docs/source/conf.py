@@ -1,27 +1,38 @@
+# Configuration file for the Sphinx documentation builder.
+#
+# For the full list of built-in configuration values, see the documentation:
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
+
+# -- Project information -----------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../src'))
+sys.path.insert(0, os.path.abspath('../../'))
 
-# Extensiones necesarias para autodoc
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
+    'sphinx.ext.viewcode',
 ]
+
 
 project = 'rps0'
 copyright = '2025, Alejandro Cancelas Chapela'
 author = 'Alejandro Cancelas Chapela'
 
-# Documento principal
-master_doc = 'index'
+# -- General configuration ---------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-# Paths
+extensions = []
+
 templates_path = ['_templates']
 exclude_patterns = []
 
 language = 'es'
 
-# HTML
+# -- Options for HTML output -------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
+
 html_theme = 'alabaster'
 html_static_path = ['_static']

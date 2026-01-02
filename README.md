@@ -45,6 +45,7 @@ El agente se ha diseñado como **agente reactivo basado en modelos**. Su arquite
 4. **Reglas de Condición-Acción (Mapeo de Decisión):** Decide la acción óptima basada en la predicción.  
 5. **Actuadores (Ejecución):** Devuelve la acción seleccionada y actualiza el estado del entorno.
 
+<img src="rps/data/flujo.png" alt="Diagrama de flujo" width="500">
 ---
 
 ## Implementación en Python
