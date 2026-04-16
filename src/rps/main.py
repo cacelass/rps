@@ -104,8 +104,20 @@ def get_computer_action() -> GameAction:
         else:
             return random.randint(0, len(GameAction) - 1)
 
-    if len(memoria) > 5:
+    def bayes_analysis() -> int:
+        """
+        Realiza un análisis bayesiano simple para predecir la próxima jugada del usuario
+        basándose en las últimas jugadas.
+
+        Returns:
+            int: índice de la acción a jugar
+        """
+
+
+    if len(memoria) > 5 and len(memoria) <= 20:
         computer_selection: int = frequency_analysis()
+    elif len(memoria) > 20:
+        computer_selection: int = bayes_analysis()
     else:
         computer_selection: int = random.randint(0, len(GameAction) - 1)
 
