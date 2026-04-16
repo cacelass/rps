@@ -4,6 +4,7 @@ from typing import List
 
 # Historial de jugadas del usuario
 memoria: List[int] = []
+tipo_juego = input("RPS(0) o RPSLG(1): ")
 
 class GameAction(IntEnum):
     """
@@ -16,11 +17,13 @@ class GameAction(IntEnum):
         Lizard (int): Lagarto
         Spock (int): Spock
     """
+
     Rock = 0
     Paper = 1
     Scissors = 2
-    Lizard = 3
-    Spock = 4
+    if tipo_juego == '1':
+        Lizard = 3
+        Spock = 4
 
 class GameResult(IntEnum):
     """
@@ -36,13 +39,23 @@ class GameResult(IntEnum):
     Tie = 2
 
 # Tabla de victorias: lista de acciones que cada acción puede vencer
-Victories = {
-    GameAction.Rock:     [GameAction.Scissors, GameAction.Lizard],
-    GameAction.Paper:    [GameAction.Rock, GameAction.Spock],
-    GameAction.Scissors: [GameAction.Paper, GameAction.Lizard],
-    GameAction.Lizard:   [GameAction.Spock, GameAction.Paper],
-    GameAction.Spock:    [GameAction.Scissors, GameAction.Rock]
+
+Victories_RPS = {
+    GameAction.Rock:     [GameAction.Scissors],
+    GameAction.Paper:    [GameAction.Rock],
+    GameAction.Scissors: [GameAction.Paper],
 }
+
+if tipo_juego == '1':
+    Victories = {
+        GameAction.Rock:     [GameAction.Scissors, GameAction.Lizard],
+        GameAction.Paper:    [GameAction.Rock, GameAction.Spock],
+        GameAction.Scissors: [GameAction.Paper, GameAction.Lizard],
+        GameAction.Lizard:   [GameAction.Spock, GameAction.Paper],
+        GameAction.Spock:    [GameAction.Scissors, GameAction.Rock]
+    }
+else:
+    Victories = Victories_RPS
 
 def assess_game(user_action: GameAction, computer_action: GameAction) -> GameResult:
     """
@@ -62,6 +75,7 @@ def assess_game(user_action: GameAction, computer_action: GameAction) -> GameRes
         raise TypeError(f"user_action debe ser GameAction, no {type(user_action).__name__}")
     if not isinstance(computer_action, GameAction):
         raise TypeError(f"computer_action debe ser GameAction, no {type(computer_action).__name__}")
+    
 
     if user_action == computer_action:
         print(f"User and computer picked {user_action.name}. Draw game!")
@@ -177,8 +191,9 @@ def main() -> None:
         computer_action: GameAction = get_computer_action()
         assess_game(user_action, computer_action)
 
+    
         if not play_another_round():
-            break
+                break
 
 if __name__ == "__main__":
     main()
