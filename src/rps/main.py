@@ -112,11 +112,22 @@ def get_computer_action() -> GameAction:
         Returns:
             int: índice de la acción a jugar
         """
+        transiciones = [[0] * 5 for _ in range(5)]
 
+        for i in range(len(memoria) - 1):
+            prev_action = memoria[i]
+            next_action = memoria[i + 1]
+            transiciones[prev_action][next_action] += 1 
 
-    if len(memoria) > 5 and len(memoria) <= 20:
+        fila = transiciones[memoria[-1]]              
+        prediccion = fila.index(max(fila))    
+
+        winning_options = [k for k, v in Victories.items() if GameAction(prediccion) in v]
+        return random.choice(winning_options)
+
+    if len(memoria) > 5 and len(memoria) <= 15:
         computer_selection: int = frequency_analysis()
-    elif len(memoria) > 20:
+    elif len(memoria) > 15:
         computer_selection: int = bayes_analysis()
     else:
         computer_selection: int = random.randint(0, len(GameAction) - 1)
