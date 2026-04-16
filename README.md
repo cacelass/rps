@@ -1,107 +1,153 @@
-# Práctica Axentes Intelixentes
+# RPS Predictive Agent
 
-**rps_clase de Alejandro Cancelas Chapela**
+**Autor:** Alejandro Cancelas Chapela  
+**Asignatura:** Práctica Axentes Intelixentes  
+**Especialidad:** Inteligencia Artificial y Big Data
 
-# RPS
-
-Proyecto de la especialidad **Inteligencia Artificial y Big Data** sobre la estructura de un agente para el juego **Piedra-Papel-Tijeras (RPS)**.  
-Implementa un **agente secuencial de predicción por frecuencia** en Python, diseñado para detectar patrones del oponente y tomar decisiones inteligentes basadas en su historial de jugadas.
-
----
-
-## Descripción
-
-Se propone programar un agente inteligente que solucione el entorno de tareas del juego Piedra-Papel-Tijeras, siguiendo las directrices de modelado propuestas en el capítulo 2 *Intelligent Agents* del libro *IA: A Modern Approach*, de Russell & Norvig.
-
-El proyecto sigue los principios **SOLID**, permitiendo extender la lógica a otras versiones del juego y futuras implementaciones de IA.
+Agente inteligente para los juegos **Piedra-Papel-Tijeras (RPS)** y **Piedra-Papel-Tijeras-Lagarto-Spock (RPSLG)**, implementado en Python. El agente analiza el historial de jugadas del usuario y adapta su estrategia de predicción a lo largo de la partida.
 
 ---
 
 ## Contorno de tareas
 
-| Contorno de tareas | Observable | Agentes | Determinista | Episódico | Estático | Discreto | Conocido |
-|-------------------|------------|---------|--------------|-----------|----------|----------|----------|
-| RPS               | Parcialmente observable | Multiagente | Estocástico | Secuencial | Estático | Discreto | Conocido |
+| Propiedad | Valor |
+|-----------|-------|
+| Observable | Parcialmente observable |
+| Agentes | Multiagente (competitivo) |
+| Determinista | Estocástico |
+| Episódico | Secuencial |
+| Estático | Estático |
+| Discreto | Discreto |
+| Conocido | Conocido |
 
 **Justificación:**
 
-- **Observable:** Parcialmente observable. El agente no puede ver qué acción elegirá el rival.  
-- **Agentes:** Multiagente. Competitivo, juega contra otro agente o humano.  
-- **Determinista:** Estocástico. Los resultados dependen de las decisiones del rival y del azar.  
-- **Episódico:** Secuencial. Cada decisión afecta a las rondas siguientes.  
-- **Estático:** El entorno permanece estable hasta que el agente actúa.  
-- **Discreto:** Las acciones son finitas (piedra, papel, tijeras).  
-- **Conocido:** El agente conoce previamente las reglas del juego.  
+- **Parcialmente observable:** el agente no puede ver la acción del rival antes de elegir la suya.
+- **Multiagente competitivo:** juega contra un humano u otro agente con objetivos opuestos.
+- **Estocástico:** el resultado depende de las decisiones del rival, no solo del agente.
+- **Secuencial:** cada ronda afecta a las siguientes; el historial es parte del estado.
+- **Estático:** el entorno no cambia mientras el agente delibera.
+- **Discreto:** el espacio de acciones es finito (3 o 5 gestos).
+- **Conocido:** las reglas del juego son conocidas de antemano.
 
 ---
 
-## Estructura del agente
+## Arquitectura del agente
 
-El agente se ha diseñado como **agente reactivo basado en modelos**. Su arquitectura incluye:
+El agente sigue el modelo de **agente reactivo basado en modelos** (Russell & Norvig, cap. 2):
 
-1. **Sensores (Captura de percepciones):** Reciben la acción del usuario y la transforman en datos procesables.  
-2. **Estado Interno (Modelo del Mundo):** Mantiene un historial de interacciones, permitiendo al agente recordar patrones previos.  
-3. **Evolución del Mundo (Lógica Predictiva):** Analiza el historial para estimar la acción más probable del rival.  
-4. **Reglas de Condición-Acción (Mapeo de Decisión):** Decide la acción óptima basada en la predicción.  
-5. **Actuadores (Ejecución):** Devuelve la acción seleccionada y actualiza el estado del entorno.
+```
+Percepciones → Estado interno → Lógica predictiva → Decisión → Acción
+```
 
-<img src="data/flujo.png" alt="Diagrama de flujo" width="500">
----
-
-## Implementación en Python
-
-El código se construye con **modularidad y separación de responsabilidades**:
-
-- **Separación de responsabilidades (SRP):** Cada módulo tiene una función clara: reglas del juego, decisiones del agente, interacción con el usuario.  
-- **Diseño extensible (OCP):** Permite añadir nuevos gestos como Lagarto o Spock simplemente actualizando la tabla de victorias.
-
-**Funcionamiento del agente:**
-
-1. De 1 a 5 rondas, elige acciones aleatorias.  
-2. A partir de la ronda 6, analiza la frecuencia de las jugadas del usuario:  
-   - Calcula el porcentaje de cada acción.  
-   - Identifica la acción más frecuente.  
-   - Si la frecuencia supera 0.40, predice la repetición del patrón y selecciona la acción que maximiza la victoria.  
-   - Si no hay patrón claro, mantiene aleatoriedad para robustez.
-
-El historial de jugadas se guarda en memoria, transformando el entorno de episódico a secuencial.
+| Componente | Descripción |
+|------------|-------------|
+| Sensores | Capturan la acción del usuario y la transforman en un valor numérico |
+| Estado interno | Historial de jugadas (`memoria`) que convierte el entorno en secuencial |
+| Lógica predictiva | Análisis de frecuencia y bayesiano para estimar la próxima jugada |
+| Reglas condición-acción | Selección de la acción que maximiza la victoria contra la predicción |
+| Actuadores | Devuelven la acción elegida y actualizan el estado |
 
 ---
 
-## Mejoras y extensiones
+## Estrategia de predicción
 
-- Se puede extender la lógica a la versión **Piedra-Papel-Tijeras-Lagarto-Spock** sin reestructurar el agente.  
-- Modularidad y separación de responsabilidades permiten futuras mejoras en la IA del agente.  
-- La documentación está generada automáticamente con **Sphinx**, usando `autodoc` y `napoleon` para integrar docstrings de Python.
+El agente adapta su estrategia según el número de rondas jugadas:
+
+| Rondas | Estrategia |
+|--------|-----------|
+| 1 – 5 | Selección aleatoria (exploración) |
+| 6 – 15 | Análisis de frecuencia |
+| 16+ | Análisis bayesiano por transiciones |
+
+### Análisis de frecuencia (rondas 6-15)
+
+Calcula el porcentaje de uso de cada acción. Si alguna supera el 40%, predice que el usuario la repetirá y elige la acción que la derrota. Si no hay patrón claro, mantiene aleatoriedad.
+
+### Análisis bayesiano (rondas 16+)
+
+Construye una **matriz de transiciones 5×5** donde cada celda `[i][j]` cuenta cuántas veces el usuario jugó `j` después de haber jugado `i`. Con esa matriz predice la jugada más probable dada la última acción del usuario, y selecciona la acción ganadora.
+
+```
+transiciones[jugada_anterior][jugada_siguiente] += 1
+predicción = argmax(transiciones[última_jugada])
+```
 
 ---
 
-## Estructura de directorios
+## Modos de juego
 
-    rps/
-    ├── data/                       # Datos de prueba o recursos externos (opcional)
-    ├── docs/                       # Documentación del proyecto
-    │   ├── build/                  # Archivos generados por Sphinx (HTML, doctrees)
-    │   ├── docs/                   # Documentación fuente Sphinx (conf.py, .rst, _static)
-    │   │   └── source/
-    │   │       ├── conf.py         # Configuración de Sphinx
-    │   │       ├── modules.rst     # Documentación de módulos generada automáticamente
-    │   │       ├── rps.rst         # Documentación de código RPS
-    │   │       └── _static/        # Archivos estáticos (CSS, JS, imágenes)
-    │   ├── index.rst               # Documento principal para Sphinx
-    │   ├── make.bat                # Script para compilar en Windows
-    │   ├── Makefile                # Makefile para compilar documentación
-    │   └── source/                 # Otra fuente de documentación (generada por sphinx-apidoc)
-    │       ├── modules.rst
-    │       └── rps.rst
-    ├── pyproject.toml              # Configuración del proyecto Python (dependencias, build, metadata)
-    ├── README.md                   # Descripción general del proyecto
-    ├── src/                        # Código fuente
-    │   ├── rps/                    # Módulo principal del juego
-    │   │   ├── __init__.py
-    │   │   └── main.py             # Implementación del agente y lógica del juego
-    │   └── test/                   # Tests del proyecto
-    │       ├── __init__.py
-    │       └── test_proba.py
-    └── uv.lock                     # Lock file generado por Hatch (gestor de entornos)
+Al iniciar, el agente pregunta el modo:
 
+- `0` — **RPS:** Piedra, Papel, Tijeras (3 acciones)
+- `1` — **RPSLG:** Piedra, Papel, Tijeras, Lagarto, Spock (5 acciones)
+
+Las tablas de victorias y la lógica de predicción se adaptan automáticamente al modo elegido.
+
+### Tabla de victorias RPSLG
+
+| Acción | Vence a |
+|--------|---------|
+| Rock | Scissors, Lizard |
+| Paper | Rock, Spock |
+| Scissors | Paper, Lizard |
+| Lizard | Spock, Paper |
+| Spock | Scissors, Rock |
+
+---
+
+## Estructura del proyecto
+
+```
+rps/
+├── data/                       # Recursos externos (imágenes, diagramas)
+├── docs/                       # Documentación generada con Sphinx
+│   ├── build/                  # HTML generado
+│   └── source/                 # Fuentes Sphinx (conf.py, .rst)
+├── src/
+│   ├── rps/
+│   │   ├── __init__.py
+│   │   └── main.py             # Lógica principal del agente
+│   └── test/
+│       ├── __init__.py
+│       └── test_proba.py       # Tests de probabilidad
+├── pyproject.toml
+├── README.md
+└── uv.lock
+```
+
+---
+
+## Instalación y uso
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/cacelass/rps-predictive-agent
+cd rps-predictive-agent
+
+# Instalar dependencias con uv
+uv sync
+
+# Ejecutar
+python3 src/rps/main.py
+```
+
+---
+
+## Documentación
+
+Generada automáticamente con **Sphinx** usando `autodoc` y `napoleon` para integrar los docstrings de Python.
+
+```bash
+cd docs
+make html
+```
+
+---
+
+## Principios de diseño
+
+El proyecto sigue los principios **SOLID**:
+
+- **SRP:** cada función tiene una responsabilidad única (evaluación, predicción, interacción).
+- **OCP:** añadir nuevos gestos solo requiere actualizar la tabla de victorias y el enum, sin tocar la lógica del agente.
